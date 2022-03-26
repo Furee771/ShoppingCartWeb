@@ -6,9 +6,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+string connectionString = "";
+try{
+    connectionString = builder.Configuration.GetConnectionString("DefualtConnection");
+}catch{}
+if(string.IsNullOrEmpty(connectionString)){
+    connectionString = @"Server=(localdb)\mssqllocaldb;Integrated Security=true;AttachDbFileName=C:\Users\Furee\ASPNETCOREDB.mdf;";
+}
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefualtConnection"));
+    options.UseSqlServer(connectionString);
 });
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 var app = builder.Build();

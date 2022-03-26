@@ -4,9 +4,7 @@ using ShoppingCart.DataAccess.ViewModels;
 
 namespace ShoppingCartWeb.Areas.Admin.Controllers
 {
-    public class CategoryControllers : Controller
-    {
-        [Area("Admin")]
+        [Area("Admin")] //админ
         public class CategoryController : Controller
         {
             private IUnitOfWork _unitOfWork;
@@ -101,5 +99,4 @@ namespace ShoppingCartWeb.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
         }
-    }
-}
+ }
