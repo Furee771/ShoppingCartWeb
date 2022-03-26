@@ -9,15 +9,44 @@
         <div class="col-6">
             <h2 class="text-primary">List of Categories</h2>
         </div>
-        <div class="col-6" text-end>
-            <a class="bth bth-primary" asp-action="CreateUpdate"asp-controller="" ></a>
+        <div class="col-6 text-end">
+            <a class="bth bth-primary" asp-action="CreateUpdate"asp-controller="Category"><i class="bi bi-plus-circle">&nt</i></a>
         </div>
     </div>
 
 </div>
+
 <table class="table table-bordered table-striped"style="width:100%">
     <thead>
-
+        <tr>
+            <th>
+                Category Name
+            </th>
+            <th>
+                Display Order
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
     </thead>
+
+    <tbody>
+        @foreach(var item in Model.categories){
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.DisplayOrder
+                </td>
+                <td role="group">
+                    <a asp-action="Create Update" asp-controller="category" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                    <a asp-action="Delete" asp-controller="category" asp-route-id="@item.Id"><i class="bi bi-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
 </table>
 
