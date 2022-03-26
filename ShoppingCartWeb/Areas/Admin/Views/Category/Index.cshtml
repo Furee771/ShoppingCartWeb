@@ -4,31 +4,20 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="container p-4">
+    <div class="row p-3">
+        <div class="col-6">
+            <h2 class="text-primary">List of Categories</h2>
+        </div>
+        <div class="col-6" text-end>
+            <a class="bth bth-primary" asp-action="CreateUpdate"asp-controller="" ></a>
+        </div>
+    </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+</div>
+<table class="table table-bordered table-striped"style="width:100%">
     <thead>
-        <tr>
-            <th>Name</th>
-            <th>Display Order</th>
-        </tr>
+
     </thead>
-    <tbody>
-@foreach (var item in Model.categories) {
-    <tr>
-            <td>@item.Name</td>
-            <td>@item.DisplayOrder</td>
-        
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-            </td>
-        </tr>
-        
-}
-    </tbody>
 </table>
+
