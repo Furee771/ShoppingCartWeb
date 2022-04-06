@@ -12,7 +12,7 @@ try{
     connectionString = builder.Configuration.GetConnectionString("DefualtConnection");
 }catch{}
 if(string.IsNullOrEmpty(connectionString)){
-    connectionString = @"Server=(localdb)\mssqllocaldb;Integrated Security=true;AttachDbFileName=C:\Users\Furee\ASPNETCOREDB.mdf;";
+    connectionString = "Server=.\\SQLEXPRESS;Database=ASPNETCOREDB;Trusted_Connection=True;MultipleActiveResultSets=true";
 }
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
