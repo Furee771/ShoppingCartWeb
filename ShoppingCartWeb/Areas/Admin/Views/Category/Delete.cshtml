@@ -3,7 +3,7 @@
 <form method="post">
     <div class="border p-3 mt-4">
         <div class="row pb-3">
-            <h2 class="text-primary">Category</h2>
+            <h2 class="text-primary">Категория</h2>
             <hr />
         </div>
         <input type="hidden" asp-for="Id" />
@@ -18,10 +18,9 @@
             <input disabled asp-for="DisplayOrder" class="form-control" />
             <span asp-validation-for="DisplayOrder" class="text-danger"></span>
         </div>
-        <button class="btn btn-danger" type="submit">Delete</button>
+        <button class="btn btn-danger" type="submit">Удалить</button>
     </div>
-    <a asp-action="Index" asp-controller="category">Back to List</a>
-
+    <a asp-action="Index" asp-controller="category">Назад к списку</a>
 </form>
 
 @section scripts{

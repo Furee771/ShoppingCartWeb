@@ -4,30 +4,30 @@
 
     <div class="border p-3 mt-4">
         <div class="row p-3">
-            <h2 class="text-primary">@((Model.Category==null || Model.Category.Id==0)?"Create":"Update")Category</h2>
+            <h2 class="text-primary">@((Model.Category==null || Model.Category.Id==0)?"Создать":"Редактировать") категорию</h2>
             <hr>
         </div>
         <div asp-validation-summary=All></div>
 
         <div class="row mb-3">
-            <lable asp-for="Category.DisplayOrder"></lable>
+            <lable asp-for="Category.Name">Наименование категории</lable>
             <input asp-for="Category.Name" class="form-control" />
             <span asp-validation-for="Category.Name" class="text-danger"></span>
         </div>
         <div class="row mb-3">
-            <lable asp-for="Category.DisplayOrder"></lable>
+            <lable asp-for="Category.DisplayOrder">Порядок отображения</lable>
             <input asp-for="Category.DisplayOrder" class="form-control" />
             <span asp-validation-for="Category.DisplayOrder" class="text-danger"></span>
         </div>
         @if(Model.Category==null || Model.Category.Id==0){
-            <button class="btn btn-primary" type="submit">Create</button>
+            <button class="btn btn-primary" type="submit">Создать</button>
         }
         else
         {
-             <button class="btn btn-primary" type="submit">Update</button>
+             <button class="btn btn-primary" type="submit">Редактировать</button>
         }
     </div>
-    <a asp-action="Index" asp-controller="category">Back to List</a>
+    <a asp-action="Index" asp-controller="category">Назад к списку</a>
 
 </form>
 

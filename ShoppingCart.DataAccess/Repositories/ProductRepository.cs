@@ -20,7 +20,7 @@ namespace ShoppingCart.DataAccess.Repositories
         public void Update (Product product)
         {
             var productDb = _context.Products.FirstOrDefault(x => x.Id == product.Id);
-            if(productDb == null)
+            if(productDb != null)
             {
                 productDb.Name = product.Name;
                 productDb.Description = product.Description;
@@ -30,7 +30,6 @@ namespace ShoppingCart.DataAccess.Repositories
                     productDb.ImageUrl = product.ImageUrl;
                 }
             }
-
         }
     }
 }

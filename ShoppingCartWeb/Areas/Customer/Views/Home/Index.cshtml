@@ -1,8 +1,17 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<ShoppingCart.Models.Product>
+@{
+    ViewData["Title"] = "Главная страница";    
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row pb-4">
+    @foreach(var item in @Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="@item.ImageUrl" alt="Card image">
+            <div class="card-body">
+                <h5 class="cars-title">@item.Name</h5>
+                <p class="card-text">Цена: @item.Price.ToString("0.00") руб.</p>
+                    <a asp-action="Details" asp-controller="Home" asp-route-productId="@item.Id" class="btn btn-primary">Подробнее</a>
+            </div>
+        </div>
+    }
 </div>

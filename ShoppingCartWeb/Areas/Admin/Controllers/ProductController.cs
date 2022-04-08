@@ -85,13 +85,12 @@ namespace ShoppingCartWeb.Areas.Admin.Controllers
                         {
                             System.IO.File.Delete(oldImagePath);
                         }
-
                     }
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
                         file.CopyTo(fileStream);
                     }
-                    vm.Product.ImageUrl = @"\ProductImage" + fileName;
+                    vm.Product.ImageUrl = @"\ProductImage\" + fileName;
                 }
                 if (vm.Product.Id == 0)
                 {

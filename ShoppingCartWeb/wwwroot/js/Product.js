@@ -1,9 +1,10 @@
 ﻿var dtable;
 $(document).ready(function () {
-
     dtable = $('#myTable').DataTable({
-
-        "ajax": { "url": "Admin/Product/AllProducts" },
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
+        },
+        "ajax": { "url": "/Admin/Product/AllProducts" },
         "columns": [
             { "data": "name" },
             { "data": "description" },
@@ -19,20 +20,21 @@ $(document).ready(function () {
         ]
     });
 });
+
 function RemoveProduct(url) {
     Swal.fire({
-        title: 'Are you sure',
-        text: "You won't be able to revert this",
+        title: 'Вы уверены?',
+        text: 'Вы не сможете отменить это',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Да, удалить!',
+        cancelButtonText: 'Отмена'
     }).then((result) => {
         if (result.isConfirmed) {
-
             $.ajax({
-                url: ural,
+                url: url,
                 type: 'DELETE',
                 success: function (data) {
                     if (data.success) {
@@ -43,7 +45,6 @@ function RemoveProduct(url) {
                         toastr.error(data.message);
                     }
                 }
-
             });
         }
     })

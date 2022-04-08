@@ -19,11 +19,9 @@ namespace ShoppingCart.Models
         [Required]
         public double Price { get; set; }
         [ValidateNever]
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
         public int CategoryId { get; set; }
         [ValidateNever]
         public Category Category { get; set; }
-
-
     }
 }

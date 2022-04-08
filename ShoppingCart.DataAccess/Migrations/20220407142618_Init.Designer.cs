@@ -12,8 +12,8 @@ using ShoppingCart.DataAccess.Data;
 namespace ShoppingCart.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220324040425_ProCatToDb")]
-    partial class ProCatToDb
+    [Migration("20220407142618_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -261,7 +261,6 @@ namespace ShoppingCart.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")

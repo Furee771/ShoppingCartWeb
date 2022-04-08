@@ -17,6 +17,5 @@ namespace ShoppingCart.Models
         [DisplayName("Display Order")]
         public int DisplayOrder { get; set; }
         public DateTime CreatedDateTime { get; set; } = DateTime.Now;
-
     }
 }

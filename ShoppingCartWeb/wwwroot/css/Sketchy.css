@@ -311,6 +311,8 @@
  table {
    caption-side: bottom;
    border-collapse: collapse;
+   text-align: center;
+   width: 100%;
  }
  
  caption {

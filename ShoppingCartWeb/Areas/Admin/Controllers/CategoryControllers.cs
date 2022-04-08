@@ -21,8 +21,8 @@ namespace ShoppingCartWeb.Areas.Admin.Controllers
                 return View(categoryVM);
             }
             //
-            [HttpGet]
 
+            [HttpGet]
             public IActionResult CreateUpdate(int? id)
             {
                 CategoryVM vm = new CategoryVM();
@@ -45,7 +45,6 @@ namespace ShoppingCartWeb.Areas.Admin.Controllers
             }
             [HttpPost]
             [AutoValidateAntiforgeryToken]
-
             public IActionResult CreateUpdate(CategoryVM vm)
             {
                 if (ModelState.IsValid)
@@ -68,7 +67,6 @@ namespace ShoppingCartWeb.Areas.Admin.Controllers
             }
 
             [HttpGet]
-
             public IActionResult Delete(int? id)
             {
                 if(id == null || id == 0)
@@ -85,7 +83,6 @@ namespace ShoppingCartWeb.Areas.Admin.Controllers
 
             [HttpPost, ActionName("Delete")]
             [ValidateAntiForgeryToken]
-
             public IActionResult DeleteData(int? id)
             {
                 var category = _unitOfWork.Category.GetT(x => x.Id == id);
