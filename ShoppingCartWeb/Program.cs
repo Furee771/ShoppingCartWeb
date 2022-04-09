@@ -1,24 +1,25 @@
 using Microsoft.EntityFrameworkCore;
 using ShoppingCart.DataAccess.Data;
 using ShoppingCart.DataAccess.Repositories;
+using Microsoft.AspNetCore.Identity;
+using ShoppingCart.Utility.DbInitalize;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
-string connectionString = "";
-try{
-    connectionString = builder.Configuration.GetConnectionString("DefualtConnection");
-}catch{}
-if(string.IsNullOrEmpty(connectionString)){
-    connectionString = "Server=.\\SQLEXPRESS;Database=ASPNETCOREDB;Trusted_Connection=True;MultipleActiveResultSets=true";
-}
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+builder.Services.AddDbContext<ApplicationDbContext>( options =>
 {
-    options.UseSqlServer(connectionString);
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefualtConnection"));
 });
+
+builder.Services.AddIdentity<IdentityUser,IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddScoped<IDbInitializer, DbInitializerRepo>();
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddRazorPages();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -33,11 +34,21 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+dataSedding();
+app.UseAuthentication();
 app.UseAuthorization();
+app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+void dataSedding()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var DbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+        DbInitializer.Initalizer();
+    }
+}
