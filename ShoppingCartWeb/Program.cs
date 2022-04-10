@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using ShoppingCart.Utility.DbInitalize;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using ShoppingCart.Utility;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,13 @@ builder.Services.AddIdentity<IdentityUser,IdentityRole>().AddDefaultTokenProvide
 builder.Services.AddScoped<IDbInitializer, DbInitializerRepo>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+    options.LoginPath = $"/Identity/Account/Login";
+    options.LogoutPath = $"/Identity/Account/Logout";
+});
+
 
 builder.Services.AddRazorPages();
 var app = builder.Build();

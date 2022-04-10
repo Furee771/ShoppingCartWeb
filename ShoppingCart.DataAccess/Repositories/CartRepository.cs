@@ -17,7 +17,13 @@ namespace ShoppingCart.DataAccess.Repositories
         }
         public void Update(Cart cart)
         {
-
+            var cartDB = _context.Carts.FirstOrDefault(x => x.Id == cart.Id);
+            if (cartDB != null)
+            {
+                cartDB.Product = cart.Product;
+                cartDB.ApplicationUser = cart.ApplicationUser;
+                cartDB.Count = cart.Count;
+            }
         }
     }
 }
