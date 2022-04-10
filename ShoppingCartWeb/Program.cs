@@ -8,11 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<ApplicationDbContext>( options =>
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefualtConnection"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
 builder.Services.AddIdentity<IdentityUser,IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddScoped<IDbInitializer, DbInitializerRepo>();
@@ -48,7 +47,7 @@ void dataSedding()
 {
     using (var scope = app.Services.CreateScope())
     {
-        var DbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
-        DbInitializer.Initalizer();
+        var DbInitialize = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+        DbInitialize.Initalizer();
     }
 }

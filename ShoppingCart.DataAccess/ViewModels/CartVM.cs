@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShoppingCart.DataAccess.ViewModels
 {
-     public class Cart
+     public class CartVM
     {
         public int Id { get; set; }
         public int ProductId { get; set; }

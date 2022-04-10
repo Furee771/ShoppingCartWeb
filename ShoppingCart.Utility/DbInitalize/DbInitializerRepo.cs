@@ -38,7 +38,7 @@ namespace ShoppingCart.Utility.DbInitalize
             {
                 throw;
             }
-
+            
             if (!_roleManager.RoleExistsAsync(WebSiteRole.Role_Admin).GetAwaiter().GetResult())
             {
                 _roleManager.CreateAsync(new IdentityRole(WebSiteRole.Role_Admin)).GetAwaiter().GetResult();

@@ -10,6 +10,6 @@ namespace ShoppingCart.Utility
     {
         public const string Role_User = "Customer";
         public const string Role_Admin = "Admin";
-        public static string Role_Employee = "Employee";
+        public const string Role_Employee = "Employee";
     }
 }
