@@ -42,7 +42,6 @@ namespace ShoppingCartWeb.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-
         public IActionResult Details(Cart cart)
         {
             if (!ModelState.IsValid)
@@ -53,7 +52,7 @@ namespace ShoppingCartWeb.Controllers
 
                 var cartItem = _unitOfWork.Cart.GetT(x => x.ProductId == cart.ProductId &&
                 x.ApplicationUserId == claims.Value);
-                if (cartItem != null)
+                if (cartItem == null)
                 {
                     _unitOfWork.Cart.Add(cart);
                     _unitOfWork.Save();

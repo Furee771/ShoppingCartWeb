@@ -1,7 +1,6 @@
 ﻿@model ShoppingCart.Models.Cart
  <h1>Карточка продукта</h1>
 <form method="post">
-
     <div class="row">
         <div class="col-4">
             <img src="@Model.Product.ImageUrl" width="200" height="200"/>
@@ -18,7 +17,7 @@
                     <input asp-for="Count" class="form-control"/>
                     <span asp-validation-for="Count" class="text-danger"></span>
                 </div>
-                <div class"form-control">
+                <div class="form-control">
                     <button class="btn btn-success" asp-action="Index" asp-controller="Home">Назад</button>
                     <button type="submit" class="btn btn-dark">Добавить в корзину</button>
                 </div>

@@ -1,5 +1,4 @@
 ﻿@model ShoppingCart.DataAccess.ViewModels.CartVM
-
 <section class="h-100" style=background-color: #eee;">
     <div class="container h-100 py-5">
         <div class="row d-flex justify-content align-items-center h-100">
@@ -41,9 +40,17 @@
                             </div>
                         </div>
                 }
+                <div class="card mb-4">
+                    <div class="card-body p-4 d-flex flex-row">
+                        <div class="form-outline flex-fill">
+                            <label class="form-label">Общая сумма</label>
+                        </div>
+                        <label class="ms-3">@Model.OrderHeader.OrderTotal.ToString("c")</label>
+                    </div>
+                </div>
                 <div class="card">
                     <div class="card-body p-4 d-flex flex-row">
-                            <a asp-action="Summary" class="btn btn-maring btn-block btn-lg ms-3">Proceed to Pay</a>
+                            <a asp-action="Summary" class="btn btn-warning btn-block btn-lg ms-3">Proceed to Pay</a>
                     </div>
                 </div>
              </div> 

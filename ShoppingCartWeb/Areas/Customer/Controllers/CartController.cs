@@ -59,7 +59,7 @@ namespace ShoppingCartWeb.Areas.Customer.Controllers
         }
 
         [HttpPost]
-        public IActionResult plus(int id)
+        public IActionResult Plus(int id)
         { 
             var cart = _unitOfWork.Cart.GetT(x => x.Id == id);
            // _unitOfWork.Cart.IncrementCartItem(cart, 1);
@@ -67,7 +67,7 @@ namespace ShoppingCartWeb.Areas.Customer.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult minus(int id)
+        public IActionResult Minus(int id)
         {
             var cart = _unitOfWork.Cart.GetT(x => x.Id == id);
             if (cart.Count <= 1)
@@ -83,7 +83,7 @@ namespace ShoppingCartWeb.Areas.Customer.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult delete(int id)
+        public IActionResult Delete(int id)
         {
             var cart = _unitOfWork.Cart.GetT(x => x.Id == id);
             _unitOfWork.Cart.Delete(cart);
