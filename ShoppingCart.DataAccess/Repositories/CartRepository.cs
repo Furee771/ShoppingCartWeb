@@ -25,5 +25,23 @@ namespace ShoppingCart.DataAccess.Repositories
                 cartDB.Count = cart.Count;
             }
         }
+
+        public void IncrementCartItem(Cart cart, int count)
+        {
+            var cartDB = _context.Carts.FirstOrDefault(x => x.Id == cart.Id);
+            if (cartDB != null)
+            {
+                cartDB.Count = cart.Count + count;
+            }
+        }
+
+        public void DecrementCartItem(Cart cart, int count)
+        {
+            var cartDB = _context.Carts.FirstOrDefault(x => x.Id == cart.Id);
+            if (cartDB != null)
+            {
+                cartDB.Count = cart.Count - count;
+            }
+        }
     }
 }

@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ShoppingCart.DataAccess.Repositories;
 using ShoppingCart.DataAccess.ViewModels;
 
 namespace ShoppingCartWeb.Areas.Admin.Controllers
 {
         [Area("Admin")] //админ
+        [Authorize(Roles ="Admin")]
         public class CategoryController : Controller
         {
             private IUnitOfWork _unitOfWork;

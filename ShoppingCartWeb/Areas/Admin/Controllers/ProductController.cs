@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ShoppingCart.DataAccess.Repositories;
@@ -7,7 +8,8 @@ namespace ShoppingCartWeb.Areas.Admin.Controllers
 {
     
     [Area("Admin")]
-     public class ProductController : Controller
+    [Authorize(Roles = "Admin")]
+    public class ProductController : Controller
      {
          private IUnitOfWork _unitofWork;
          private IWebHostEnvironment _hostingEnvironment;

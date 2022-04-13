@@ -1,0 +1,255 @@
+﻿@model ShoppingCart.DataAccess.ViewModels.OrderVM
+@using ShoppingCart.Utility
+@{
+    ViewData["Title"] = "Детали получения";
+}
+<form method="post">
+    <input type="hidden" asp-for="OrderHeader.Id" />
+    <div class="container-sm">
+        <div class="row">
+            <div class="col-6">
+                <h2>Детали получения</h2>
+                <div class="row mb-3">
+                    @if (User.IsInRole(WebSiteRole.Role_Admin) || User.IsInRole(WebSiteRole.Role_Employee))
+                    {
+                        <label asp-for="OrderHeader.Name">Имя</label>
+                        <input asp-for="OrderHeader.Name" class="form-control"/>
+                        <span asp-validation-for="OrderHeader.Name" class="text-danger"></span>
+                    }
+                    else
+                    {
+                        <label asp-for="OrderHeader.Name">Имя</label>
+                        <input readonly asp-for="OrderHeader.Name" class="form-control"/>
+
+                    }
+                </div>
+                <div class="row mb-3">
+                    @if(User.IsInRole(WebSiteRole.Role_Admin) || User.IsInRole(WebSiteRole.Role_Employee))
+                    {
+                        <label asp-for="OrderHeader.Phone">Телефон</label>
+                        <input asp-for="OrderHeader.Phone" class="form-control" />
+                        <span asp-validation-for="OrderHeader.Phone" class="text-danger"></span>
+                    }
+                    else
+                    {
+                         <label asp-for="OrderHeader.Phone">Телефон</label>
+                        <input readonly asp-for="OrderHeader.Phone" class="form-control"/>
+                    }
+                </div>
+                <div class="row mb-3">
+                    @if (User.IsInRole(WebSiteRole.Role_Admin) || User.IsInRole(WebSiteRole.Role_Employee))
+                    {
+                        <label asp-for="OrderHeader.Address">Адресс</label>
+                        <input asp-for="OrderHeader.Address" class="form-control"/>
+                        <span asp-validation-for="OrderHeader.Address" class="text-danger"></span>
+                    }
+                    else
+                    {
+                        <label asp-for="OrderHeader.Address">Адресс</label>
+                        <input readonly asp-for="OrderHeader.Address" class="form-control"/>
+
+                    }
+                </div>
+                <div class="row mb-3">
+                    @if (User.IsInRole(WebSiteRole.Role_Admin) || User.IsInRole(WebSiteRole.Role_Employee))
+                    {
+                        <label asp-for="OrderHeader.City">Город</label>
+                        <input asp-for="OrderHeader.City" class="form-control"/>
+                        <span asp-validation-for="OrderHeader.City" class="text-danger"></span>
+                    }
+                    else
+                    {
+                        <label asp-for="OrderHeader.City">Город</label>
+                        <input readonly asp-for="OrderHeader.City" class="form-control"/>
+
+                    }
+                </div>
+                <div class="row mb-3">
+                    @if (User.IsInRole(WebSiteRole.Role_Admin) || User.IsInRole(WebSiteRole.Role_Employee))
+                    {
+                        <label asp-for="OrderHeader.State">Страна</label>
+                        <input asp-for="OrderHeader.State" class="form-control"/>
+                        <span asp-validation-for="OrderHeader.State" class="text-danger"></span>
+                    }
+                    else
+                    {
+                        <label asp-for="OrderHeader.State">Страна</label>
+                        <input readonly asp-for="OrderHeader.State" class="form-control"/>
+
+                    }
+                </div>
+                  <div class="row mb-3">
+                    @if (User.IsInRole(WebSiteRole.Role_Admin) || User.IsInRole(WebSiteRole.Role_Employee))
+                    {
+                        <label asp-for="OrderHeader.PostalCode">Почтовый индекс</label>
+                        <input asp-for="OrderHeader.PostalCode" class="form-control"/>
+                        <span asp-validation-for="OrderHeader.PostalCode" class="text-danger"></span>
+                    }
+                    else
+                    {
+                        <label asp-for="OrderHeader.PostalCode">Почтовый индекс</label>
+                        <input readonly asp-for="OrderHeader.PostalCode" class="form-control"/>
+
+                    }
+                </div>
+                <div class="row mb-3">
+                     <label asp-for="OrderHeader.ApplicationUser.Email">Электронная почта</label>
+                        <input readonly asp-for="OrderHeader.ApplicationUser.Email" class="form-control"/>
+                </div>
+                <div class="row mb-3">
+                      <label asp-for="OrderHeader.DateOfOrder">Дата заказа</label>
+                      <input readonly value="@Model.OrderHeader.DateOfOrder.ToShortDateString()" class="form-control"/>
+                </div>
+                <div class="row mb-3">
+                    @if (User.IsInRole(WebSiteRole.Role_Admin) || User.IsInRole(WebSiteRole.Role_Employee))
+                    {
+                        <label asp-for="OrderHeader.TrackingNumber">Номер отслеживания</label>
+                        <input asp-for="OrderHeader.TrackingNumber" class="form-control"/>
+                    }
+                    else
+                    {
+                        <label asp-for="OrderHeader.TrackingNumber">Номер отслеживания</label>
+                        <input readonly asp-for="OrderHeader.TrackingNumber" class="form-control"/>
+
+                    }
+                </div>
+                 <div class="row mb-3">
+                    @if (User.IsInRole(WebSiteRole.Role_Admin) || User.IsInRole(WebSiteRole.Role_Employee))
+                    {
+                        <label asp-for="OrderHeader.Carrier">Курьер</label>
+                        <input asp-for="OrderHeader.Carrier" class="form-control"/>
+                    }
+                    else
+                    {
+                        <label asp-for="OrderHeader.Carrier">Курьер</label>
+                        <input readonly asp-for="OrderHeader.Carrier" class="form-control"/>
+
+                    }
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="OrderHeader.DateOfShopping">Дата покупки</label>
+                    <input readonly value="@Model.OrderHeader.DateOfShopping.ToShortDateString()" class="form-control"/>
+                </div>
+                 <div class="row mb-3">
+                    @if (User.IsInRole(WebSiteRole.Role_Admin) || User.IsInRole(WebSiteRole.Role_Employee))
+                    {
+                        <label asp-for="OrderHeader.SessionId">Идентификатор сессии</label>
+                        <input readonly asp-for="OrderHeader.SessionId" class="form-control"/>
+
+                         <label asp-for="OrderHeader.PaymentIntentId">Идентификатор платежного намерения</label>
+                        <input readonly asp-for="OrderHeader.PaymentIntentId" class="form-control"/>
+                    }
+                </div>
+                @if (@Model.OrderHeader.SessionId != null)
+                {
+                    <div class="row mb-3">
+                        <label asp-for="OrderHeader.DateofPayment">Дата платежа</label>
+                        <input readonly value="@Model.OrderHeader.DateofPayment.ToShortDateString()" class="form-control"/>
+                    </div>
+                }
+                 <div class="row mb-3">
+                        <label asp-for="OrderHeader.PaymentStatus">Статус платежа</label>
+                        <input readonly value="@Model.OrderHeader.PaymentStatus" class="form-control"/>
+                 </div>
+                 <div class="row mb-3">
+                     <button type="submit" class="btn btn-primary">Обновить заказ</button>
+                 </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-4">
+                    <div class="card mb-4">
+                        <div class="card-header py-3">
+                            <h5 class="mb-0"> Итог заказа - @Model.OrderHeader.OrderStatus</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                @foreach(var item in Model.OrderDetail)
+                                {
+                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                        <span>@item.Product.Name</span>
+                                        <span>Количество: @item.Count</span>
+                                        <span>Цена: @item.Price.ToString("c")</span>
+                                        <div class="text-end">Сумма: @((item.Count*item.Price).ToString("c"))</div>
+                                    </li>
+                                }
+                                <li class="list-group-item d-flex justify-content-between align-item-cente border-0 px-0 pb-0">
+                                    <div>
+                                        <strong> Общая сумма &nbsp;<span class="text-end">@Model.OrderHeader.OrderTotal</span> RUB </strong>
+                                    </div>
+                                    <span><strong></strong></span>
+                                </li>
+                            </ul>
+                        </div>
+                    @if (User.IsInRole(WebSiteRole.Role_Admin) || User.IsInRole(WebSiteRole.Role_Employee))
+                        {
+                            if (Model.OrderHeader.OrderStatus == OrderStatus.StatusApproved)
+                            {
+                                <button asp-action="InProcess" type="submit" class="btn btn-info btn-lg btn-block mb-2">
+                                    Start Processing
+                                </button>
+                            }
+                            if(Model.OrderHeader.OrderStatus== OrderStatus.StatusInProcess)
+                            {
+                                <button asp-action="Shipped" type="submit" onclick="return ValidateEmpty()" class="btm btn-success">
+                                    Ship Order
+                                </button>
+                            }
+                            if(Model.OrderHeader.OrderStatus != OrderStatus.StatusRefund && 
+                            Model.OrderHeader.OrderStatus != OrderStatus.StatusCancelled)
+                            { 
+                                <button asp-action="CancelOrder" type="submit" class="btn btn-dark btn-lg btn-block mb-2">
+                                    Cancel Order
+                                </button>
+                            }
+                        }
+                        else
+                        {
+                            @if(User.IsInRole(WebSiteRole.Role_User) && Model.OrderHeader.OrderStatus == OrderStatus.StatusPending)
+                            {
+                                <button asp-action="PayNow" type="submit" class="btn btn-success btn-lg btn-block mb-2">
+                                  Pay  Now
+                                </button>
+                            }
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@section scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
+<script>
+funtion ValidfteEmty()
+{
+    if(ducument.getElementById("OrderHeader_TrackingNumber").value=="")
+    {
+        Swal.fire
+		({
+	icon: 'error',
+	title: 'Oops...',
+	text: 'Upload Image'
+
+    });
+    return false;
+    }
+    if(document.getElementById("OrderHeader_Carrier").value=="")
+    {
+        Swal.fire
+		({
+	icon: 'error',
+	title: 'Oops'
+	text: 'Upload Image'
+		});
+	return false;
+    }
+    return true;
+}
+</script>

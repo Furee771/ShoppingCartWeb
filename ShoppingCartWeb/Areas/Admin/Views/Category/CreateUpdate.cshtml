@@ -1,4 +1,7 @@
 ﻿@model ShoppingCart.DataAccess.ViewModels.CategoryVM
+@{
+    ViewData["Title"] = "Создание категории";
+}
 <form method="post" asp-action="CreateUpdate">
     <input type="hidden" asp-for="Category.Id" />
 

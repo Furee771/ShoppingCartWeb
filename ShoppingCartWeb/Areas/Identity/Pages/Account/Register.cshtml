@@ -1,19 +1,19 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Регистрация";
 }
 
 <h1>@ViewData["Title"]</h1>
 <div class="row">
     <div class="col-md-6">
         <form id="registerForm" class="row" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
+            <h2>Создать новый аккаунт.</h2>
             <hr/>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating col-6 py-2">
                 <input asp-for="Input.Name" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.Name"></label>
+                <label asp-for="Input.Name">Имя</label>
                 <span asp-validation-for="Input.Name" class="text-danger"></span>
             </div>
             <div class="form-floating col-6 py-2">
@@ -23,55 +23,55 @@
             </div>
             <div class="form-floating col-12 py-2">
                 <textarea asp-for="Input.Address" class="form-control" autocomplete="username" aria-required="true"></textarea>
-                <label asp-for="Input.Address"></label>
+                <label asp-for="Input.Address">Улица</label>
                 <span asp-validation-for="Input.Address" class="text-danger"></span>
             </div>
             <div class="form-floating col-6 py-2">
                 <input asp-for="Input.City" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.City"></label>
+                <label asp-for="Input.City">Город</label>
                 <span asp-validation-for="Input.City" class="text-danger"></span>
             </div>
             <div class="form-floating col-6 py-2">
                 <input asp-for="Input.State" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.State"></label>
+                <label asp-for="Input.State">Регион</label>
                 <span asp-validation-for="Input.State" class="text-danger"></span>
             </div>
             <div class="form-floating col-6 py-2">
                 <input asp-for="Input.PinCode" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.PinCode"></label>
+                <label asp-for="Input.PinCode">Пин-код</label>
                 <span asp-validation-for="Input.PinCode" class="text-danger"></span>
             </div>
             <div class="form-floating col-6 py-2">
                 <input asp-for="Input.Phone" class="form-control" autocomplete="username" aria-required="true"/>
-                <label asp-for="Input.Phone"></label>
+                <label asp-for="Input.Phone">Номер телефона</label>
                 <span asp-validation-for="Input.Phone" class="text-danger"></span>
             </div>
             <div class="form-floating col-12 py-2">
                 <input asp-for="Input.Password" class="form-control" autocomplete="off" aria-required="true" />
-                <label asp-for="Input.Password"></label>
+                <label asp-for="Input.Password">Пароль</label>
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
             <div class="form-floating col-12 py-2">
                 <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
-                <label asp-for="Input.ConfirmPassword"></label>
+                <label asp-for="Input.ConfirmPassword">Подтвердить Пароль</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Регистрация</button>
         </form>
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
-            <h3>Use another service to register.</h3>
+            @*<h3>Используйте другой сервис для регистрации.</h3>*@
             <hr />
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
-                    </div>
+                    //<div>
+                    //    //<p>
+                    //    //    There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
+                    //    //    about setting up this ASP.NET application to support logging in via external services</a>.
+                    //    //</p>
+                    //</div>
                 }
                 else
                 {
@@ -80,7 +80,7 @@
                             <p>
                                 @foreach (var provider in Model.ExternalLogins)
                                 {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Войдите, используя свой @provider.DisplayName учетная запись">@provider.DisplayName</button>
                                 }
                             </p>
                         </div>

@@ -1,4 +1,7 @@
 ﻿@model ShoppingCart.DataAccess.ViewModels.ProductVM
+@{
+    ViewData["Title"] = "Добавление продукта";
+}
 <form method="post" asp-action="CreateUpdate" enctype="multipart/form-data">
     <input type="hidden" asp-for="Product.Id" />
     <input type="hidden" asp-for="Product.ImageUrl"/>
