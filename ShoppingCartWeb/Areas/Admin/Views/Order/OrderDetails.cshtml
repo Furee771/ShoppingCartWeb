@@ -185,20 +185,20 @@
                             if (Model.OrderHeader.OrderStatus == OrderStatus.StatusApproved)
                             {
                                 <button asp-action="InProcess" type="submit" class="btn btn-info btn-lg btn-block mb-2">
-                                    Start Processing
+                                    Начать обработку
                                 </button>
                             }
                             if(Model.OrderHeader.OrderStatus== OrderStatus.StatusInProcess)
                             {
                                 <button asp-action="Shipped" type="submit" onclick="return ValidateEmpty()" class="btm btn-success">
-                                    Ship Order
+                                    Доставка заказа
                                 </button>
                             }
                             if(Model.OrderHeader.OrderStatus != OrderStatus.StatusRefund && 
                             Model.OrderHeader.OrderStatus != OrderStatus.StatusCancelled)
                             { 
                                 <button asp-action="CancelOrder" type="submit" class="btn btn-dark btn-lg btn-block mb-2">
-                                    Cancel Order
+                                    Отменить заказ
                                 </button>
                             }
                         }
